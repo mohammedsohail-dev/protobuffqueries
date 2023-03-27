@@ -183,11 +183,11 @@ for (int i = 0; i < intArray.length; i++) {
     }
     List<String[]> Answer =sortedlist.subList(sortedlist.size()-5, sortedlist.size());
     
-    Document doc = new Document().append("year",Year).append("type",Type).append("length",Length).append("state_1", Answer.get(0)[0]).append("state_2", Answer.get(1)[0]).append("state_3", Answer.get(2)[0]).append("state_4", Answer.get(3)[0]).append("state_5", Answer.get(4)[0]); 
+    Document doc = new Document().append("year_low",Year[0]).append("year_up",Year[1]).append("type",Type).append("length",Length).append("state_1", Answer.get(0)[0]).append("state_2", Answer.get(1)[0]).append("state_3", Answer.get(2)[0]).append("state_4", Answer.get(3)[0]).append("state_5", Answer.get(4)[0]); 
     
-    if(collection2.find(doc)==null){
+    
     collection2.insertOne(doc);
-    }
+    
 
 
     return Answer;

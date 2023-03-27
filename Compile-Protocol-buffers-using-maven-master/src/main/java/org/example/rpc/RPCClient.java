@@ -12,13 +12,15 @@ class RPCClient {
             InputStream istream = sock.getInputStream();
             OutputStream ostream = sock.getOutputStream();
 
-            String message0 = "2";
+            String message0 = "5";
             String message = "2013";
             String message1 = "Alabama";
             String message2 = "Private";
             String message3 = "4-year";
             String message4 = "Fees/Tuition";
-            Details request = Details.newBuilder().setQuery(message0).setYear(message).setState(message1).setType(message2).setLength(message3).setExpense(message4).build();
+            String message5 ="2015";
+            String message6 = "2014";
+            Details request = Details.newBuilder().setQuery(message0).setYear(message).setState(message1).setType(message2).setLength(message3).setExpense(message4).setRange1(message5).setRange2(message6).build();
 
                 request.writeDelimitedTo(ostream);
 

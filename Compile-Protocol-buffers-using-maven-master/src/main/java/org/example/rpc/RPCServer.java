@@ -53,7 +53,8 @@ class RPCServer {
         String Type = requestDeserial.getType();
         String Length = requestDeserial.getLength();
         String Expense = requestDeserial.getExpense();
-        String[] Range = requestDeserial.getRange();
+        String Range1 = requestDeserial.getRange1();
+        String Range2 = requestDeserial.getRange2();
         String Value = requestDeserial.getValue();
         List<Document> k= new ArrayList<>();
         List<String[]> k2= new ArrayList<>();
@@ -87,6 +88,7 @@ class RPCServer {
         else if(query.equals("4")){
 
             DAOQuery4 query4 = new DAOQuery4();
+            String[] Range = {Range1,Range2};
             k3=query4.getgrowthstates(Range, Type, Length);
         }
 

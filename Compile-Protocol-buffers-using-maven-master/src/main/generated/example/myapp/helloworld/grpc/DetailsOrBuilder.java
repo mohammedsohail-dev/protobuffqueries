@@ -76,4 +76,24 @@ public interface DetailsOrBuilder extends
    */
   com.google.protobuf.ByteString
       getValueBytes();
+
+  /**
+   * <code>optional string Range1 = 8;</code>
+   */
+  java.lang.String getRange1();
+  /**
+   * <code>optional string Range1 = 8;</code>
+   */
+  com.google.protobuf.ByteString
+      getRange1Bytes();
+
+  /**
+   * <code>optional string Range2 = 9;</code>
+   */
+  java.lang.String getRange2();
+  /**
+   * <code>optional string Range2 = 9;</code>
+   */
+  com.google.protobuf.ByteString
+      getRange2Bytes();
 }

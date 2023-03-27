@@ -22,6 +22,8 @@ public  final class Details extends
     length_ = "";
     expense_ = "";
     value_ = "";
+    range1_ = "";
+    range2_ = "";
   }
 
   @java.lang.Override
@@ -89,6 +91,18 @@ public  final class Details extends
             java.lang.String s = input.readStringRequireUtf8();
 
             value_ = s;
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            range1_ = s;
+            break;
+          }
+          case 74: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            range2_ = s;
             break;
           }
         }
@@ -352,6 +366,74 @@ public  final class Details extends
     }
   }
 
+  public static final int RANGE1_FIELD_NUMBER = 8;
+  private volatile java.lang.Object range1_;
+  /**
+   * <code>optional string Range1 = 8;</code>
+   */
+  public java.lang.String getRange1() {
+    java.lang.Object ref = range1_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      range1_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string Range1 = 8;</code>
+   */
+  public com.google.protobuf.ByteString
+      getRange1Bytes() {
+    java.lang.Object ref = range1_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      range1_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int RANGE2_FIELD_NUMBER = 9;
+  private volatile java.lang.Object range2_;
+  /**
+   * <code>optional string Range2 = 9;</code>
+   */
+  public java.lang.String getRange2() {
+    java.lang.Object ref = range2_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      range2_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string Range2 = 9;</code>
+   */
+  public com.google.protobuf.ByteString
+      getRange2Bytes() {
+    java.lang.Object ref = range2_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      range2_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -385,6 +467,12 @@ public  final class Details extends
     if (!getValueBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, value_);
     }
+    if (!getRange1Bytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, range1_);
+    }
+    if (!getRange2Bytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, range2_);
+    }
   }
 
   public int getSerializedSize() {
@@ -412,6 +500,12 @@ public  final class Details extends
     }
     if (!getValueBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, value_);
+    }
+    if (!getRange1Bytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, range1_);
+    }
+    if (!getRange2Bytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, range2_);
     }
     memoizedSize = size;
     return size;
@@ -443,6 +537,10 @@ public  final class Details extends
         .equals(other.getExpense());
     result = result && getValue()
         .equals(other.getValue());
+    result = result && getRange1()
+        .equals(other.getRange1());
+    result = result && getRange2()
+        .equals(other.getRange2());
     return result;
   }
 
@@ -467,6 +565,10 @@ public  final class Details extends
     hash = (53 * hash) + getExpense().hashCode();
     hash = (37 * hash) + VALUE_FIELD_NUMBER;
     hash = (53 * hash) + getValue().hashCode();
+    hash = (37 * hash) + RANGE1_FIELD_NUMBER;
+    hash = (53 * hash) + getRange1().hashCode();
+    hash = (37 * hash) + RANGE2_FIELD_NUMBER;
+    hash = (53 * hash) + getRange2().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -599,6 +701,10 @@ public  final class Details extends
 
       value_ = "";
 
+      range1_ = "";
+
+      range2_ = "";
+
       return this;
     }
 
@@ -628,6 +734,8 @@ public  final class Details extends
       result.length_ = length_;
       result.expense_ = expense_;
       result.value_ = value_;
+      result.range1_ = range1_;
+      result.range2_ = range2_;
       onBuilt();
       return result;
     }
@@ -695,6 +803,14 @@ public  final class Details extends
       }
       if (!other.getValue().isEmpty()) {
         value_ = other.value_;
+        onChanged();
+      }
+      if (!other.getRange1().isEmpty()) {
+        range1_ = other.range1_;
+        onChanged();
+      }
+      if (!other.getRange2().isEmpty()) {
+        range2_ = other.range2_;
         onChanged();
       }
       onChanged();
@@ -1202,6 +1318,144 @@ public  final class Details extends
   checkByteStringIsUtf8(value);
       
       value_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object range1_ = "";
+    /**
+     * <code>optional string Range1 = 8;</code>
+     */
+    public java.lang.String getRange1() {
+      java.lang.Object ref = range1_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        range1_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string Range1 = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRange1Bytes() {
+      java.lang.Object ref = range1_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        range1_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string Range1 = 8;</code>
+     */
+    public Builder setRange1(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      range1_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string Range1 = 8;</code>
+     */
+    public Builder clearRange1() {
+      
+      range1_ = getDefaultInstance().getRange1();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string Range1 = 8;</code>
+     */
+    public Builder setRange1Bytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      range1_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object range2_ = "";
+    /**
+     * <code>optional string Range2 = 9;</code>
+     */
+    public java.lang.String getRange2() {
+      java.lang.Object ref = range2_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        range2_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string Range2 = 9;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRange2Bytes() {
+      java.lang.Object ref = range2_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        range2_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string Range2 = 9;</code>
+     */
+    public Builder setRange2(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      range2_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string Range2 = 9;</code>
+     */
+    public Builder clearRange2() {
+      
+      range2_ = getDefaultInstance().getRange2();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string Range2 = 9;</code>
+     */
+    public Builder setRange2Bytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      range2_ = value;
       onChanged();
       return this;
     }

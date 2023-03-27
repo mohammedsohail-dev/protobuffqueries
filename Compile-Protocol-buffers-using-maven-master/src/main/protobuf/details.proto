@@ -1,5 +1,9 @@
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+import "grpc/status.proto";
+
 option java_multiple_files = true;
 option java_package = "example.myapp.helloworld.grpc";
 option java_outer_classname = "DetailsProto";
@@ -7,6 +11,11 @@ option java_outer_classname = "DetailsProto";
 package details;
 
 // add all the parameters here and generate rpc
+
+service Service{
+
+    rpc ExampleRpc (Details) returns (Details){}
+}
 
 message Details{
     string query=1;
@@ -16,5 +25,6 @@ message Details{
     string Length=5;
     string Expense=6;
     string Value=7;
-    string[] Range=8;
+    string Range1=8;
+    string Range2=9;
 }

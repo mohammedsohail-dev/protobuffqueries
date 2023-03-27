@@ -55,12 +55,12 @@ public List<Document> getCosts(String Year, String State,String Type,String Leng
     for (Document user : iterable) {
         users.add(user);
     }
-    if(collection2.find(doc1)==null){
+    
 
         collection2.insertMany(users);
 
 
-    }
+    
 
     return users;
 
