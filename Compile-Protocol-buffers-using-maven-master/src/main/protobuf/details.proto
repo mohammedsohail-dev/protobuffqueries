@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "example.myapp.helloworld.grpc";
+option java_outer_classname = "DetailsProto";
+
+package details;
+
+// add all the parameters here and generate rpc
+
+message Details{
+    string query=1;
+    string Year=2;
+    string State=3;
+    string Type=4;
+    string Length=5;
+    string Expense=6;
+    string Value=7;
+}
