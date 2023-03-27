@@ -7,6 +7,8 @@ import org.bson.Document;
 import org.example.mongodb.DAOQuery1;
 import org.example.mongodb.DAOQuery2;
 import org.example.mongodb.DAOQuery3;
+import org.example.mongodb.DAOQuery4;
+import org.example.mongodb.DAOQuery5;
 import org.example.mongodb.DetailsDAO;
 import org.example.mongodb.artistDAO;
 
@@ -31,58 +33,81 @@ class RPCServer {
         // DetailsDAO dao = new DetailsDAO();
         //  dao.insertAll();
         serverSocket = new ServerSocket(port); 
+         String Year = "2015";
+         String Type = "Private";
+         String Length = "4-year";
+        
+        DAOQuery5 dao = new DAOQuery5();
+        List<String[]> lo = dao.getAveragesstates(Year, Type, Length); 
+         for(int i=0;i<lo.size();i++){
+             String response = lo.get(i)[0]+" "+lo.get(i)[1] ;
+            
+             System.out.println(response);
+
+
+         }
+
+
+
+
+
+
+
         connection=serverSocket.accept();
         OutputStream outputStream = connection.getOutputStream();
         System.out.println("Server started.");
         
         
         Details requestDeserial = Details.parseDelimitedFrom(connection.getInputStream());
-        String query =requestDeserial.getQuery();
-        String Year = requestDeserial.getYear();
-        String State = requestDeserial.getState();
-        String Type = requestDeserial.getType();
-        String Length = requestDeserial.getLength();
-        String Expense = requestDeserial.getExpense();
-        String Value = requestDeserial.getValue();
-        List<Document> k= new ArrayList<>();
-        List<String[]> k2= new ArrayList<>();
-        List<String[]> k3= new ArrayList<>();
+        // String query =requestDeserial.getQuery();
+        // String Year = requestDeserial.getYear();
+        // String State = requestDeserial.getState();
+        // String Type = requestDeserial.getType();
+        // String Length = requestDeserial.getLength();
+        // String Expense = requestDeserial.getExpense();
+        // String Value = requestDeserial.getValue();
+        // List<Document> k= new ArrayList<>();
+        // List<String[]> k2= new ArrayList<>();
+        // List<String[]> k3= new ArrayList<>();
 
-        if(query.equals("1")){
+        // if(query.equals("1")){
 
-        DAOQuery1 query1 = new DAOQuery1();
+        // DAOQuery1 query1 = new DAOQuery1();
     
-        k =query1.getCosts(Year, State, Type, Length, Expense);
+        // k =query1.getCosts(Year, State, Type, Length, Expense);
         
         
-        }
+        // }
 
-        else if(query.equals("2")){
-
-
-            DAOQuery2 query2 = new DAOQuery2();
-            k2 = query2.getExpensivestates(Year, Type, Length);
+        // else if(query.equals("2")){
 
 
-
-
-        }
-        else if(query.equals("3")){
-
-            DAOQuery3 query3 = new DAOQuery3();
-            k3=query3.getEconomicstates(Year, Type, Length);
-        }
+        //     DAOQuery2 query2 = new DAOQuery2();
+        //     k2 = query2.getExpensivestates(Year, Type, Length);
 
 
 
 
-        for(int i=0;i<k2.size();i++){
-            String response = k2.get(i)[0]+" "+k2.get(i)[1] ;
+        // }
+        // else if(query.equals("3")){
+
+        //     DAOQuery3 query3 = new DAOQuery3();
+        //     k3=query3.getEconomicstates(Year, Type, Length);
+        // }
+
+
+         
+
+        // for(int i=0;i<k2.size();i++){
+        //     String response = k2.get(i)[0]+" "+k2.get(i)[1] ;
             
-            System.out.println(response);
+        //     System.out.println(response);
 
 
-        }
+        // }
+
+         
+        
         
 
     

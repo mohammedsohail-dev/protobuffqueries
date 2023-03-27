@@ -146,7 +146,7 @@ public List<String[]> getExpensivestates(String Year,String Type,String Length) 
     for (String[] state : listfinal) {
         sortedlist.add(state);
     }
-return sortedlist.subList(sortedlist.size()-5, sortedlist.size());
+return sortedlist; //.subList(sortedlist.size()-5, sortedlist.size());
         
     }
 
