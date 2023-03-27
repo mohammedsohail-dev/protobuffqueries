@@ -49,6 +49,7 @@ MongoDatabase database = mongoClient.getDatabase("skiers_resorts");
 
 public List<String[]> getExpensivestates(String Year,String Type,String Length) {
     MongoCollection<Document> collection = database.getCollection("EduCoststat");
+    MongoCollection<Document> collection2 = database.getCollection("EduCostStatQueryTwo");
     ArrayList<String> states = new ArrayList<>();
     states.add("Alabama");
     states.add("Alaska");
@@ -146,9 +147,19 @@ public List<String[]> getExpensivestates(String Year,String Type,String Length) 
     for (String[] state : listfinal) {
         sortedlist.add(state);
     }
-return sortedlist; //.subList(sortedlist.size()-5, sortedlist.size());
-        
+    List<String[]> Answer =sortedlist.subList(sortedlist.size()-5, sortedlist.size());
+    
+    Document doc = new Document().append("year",Year).append("type",Type).append("length",Length).append("state_1", Answer.get(0)[0]).append("state_2", Answer.get(1)[0]).append("state_3", Answer.get(2)[0]).append("state_4", Answer.get(3)[0]).append("state_5", Answer.get(4)[0]); 
+    
+    if(collection2.find(doc)==null){
+    collection2.insertOne(doc);
     }
+
+
+    return Answer;
+
+    
+}
 
    
     

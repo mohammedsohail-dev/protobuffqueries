@@ -33,19 +33,7 @@ class RPCServer {
         // DetailsDAO dao = new DetailsDAO();
         //  dao.insertAll();
         serverSocket = new ServerSocket(port); 
-         String Year = "2015";
-         String Type = "Private";
-         String Length = "4-year";
         
-        DAOQuery5 dao = new DAOQuery5();
-        List<String[]> lo = dao.getAveragesstates(Year, Type, Length); 
-         for(int i=0;i<lo.size();i++){
-             String response = lo.get(i)[0]+" "+lo.get(i)[1] ;
-            
-             System.out.println(response);
-
-
-         }
 
 
 
@@ -59,52 +47,68 @@ class RPCServer {
         
         
         Details requestDeserial = Details.parseDelimitedFrom(connection.getInputStream());
-        // String query =requestDeserial.getQuery();
-        // String Year = requestDeserial.getYear();
-        // String State = requestDeserial.getState();
-        // String Type = requestDeserial.getType();
-        // String Length = requestDeserial.getLength();
-        // String Expense = requestDeserial.getExpense();
-        // String Value = requestDeserial.getValue();
-        // List<Document> k= new ArrayList<>();
-        // List<String[]> k2= new ArrayList<>();
-        // List<String[]> k3= new ArrayList<>();
+        String query =requestDeserial.getQuery();
+        String Year = requestDeserial.getYear();
+        String State = requestDeserial.getState();
+        String Type = requestDeserial.getType();
+        String Length = requestDeserial.getLength();
+        String Expense = requestDeserial.getExpense();
+        String[] Range = requestDeserial.getRange();
+        String Value = requestDeserial.getValue();
+        List<Document> k= new ArrayList<>();
+        List<String[]> k2= new ArrayList<>();
+        List<String[]> k3= new ArrayList<>();
 
-        // if(query.equals("1")){
+        if(query.equals("1")){
 
-        // DAOQuery1 query1 = new DAOQuery1();
+        DAOQuery1 query1 = new DAOQuery1();
     
-        // k =query1.getCosts(Year, State, Type, Length, Expense);
+        k =query1.getCosts(Year, State, Type, Length, Expense);
         
         
-        // }
+        }
 
-        // else if(query.equals("2")){
-
-
-        //     DAOQuery2 query2 = new DAOQuery2();
-        //     k2 = query2.getExpensivestates(Year, Type, Length);
+        else if(query.equals("2")){
 
 
+            DAOQuery2 query2 = new DAOQuery2();
+            k2 = query2.getExpensivestates(Year, Type, Length);
 
 
-        // }
-        // else if(query.equals("3")){
 
-        //     DAOQuery3 query3 = new DAOQuery3();
-        //     k3=query3.getEconomicstates(Year, Type, Length);
-        // }
+
+        }
+        else if(query.equals("3")){
+
+            DAOQuery3 query3 = new DAOQuery3();
+            k3=query3.getEconomicstates(Year, Type, Length);
+        }
+
+        else if(query.equals("4")){
+
+            DAOQuery4 query4 = new DAOQuery4();
+            k3=query4.getgrowthstates(Range, Type, Length);
+        }
+
+        else if(query.equals("5")){
+
+            DAOQuery5 query5 = new DAOQuery5();
+            k3=query5.getAveragesstates(Year, Type, Length);
+        }
+        else{
+            
+        }
 
 
          
 
-        // for(int i=0;i<k2.size();i++){
-        //     String response = k2.get(i)[0]+" "+k2.get(i)[1] ;
+        for(int i=0;i<k2.size();i++){
+            String response = k2.get(i)[0]+" "+k2.get(i)[1] ;
             
-        //     System.out.println(response);
+            System.out.println(response);
 
 
-        // }
+        }
 
          
         

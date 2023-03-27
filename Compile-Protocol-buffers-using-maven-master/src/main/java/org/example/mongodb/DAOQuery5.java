@@ -49,6 +49,7 @@ MongoDatabase database = mongoClient.getDatabase("skiers_resorts");
 
 public List<String[]> getAveragesstates(String Year,String Type,String Length) {
     MongoCollection<Document> collection = database.getCollection("EduCoststat");
+    MongoCollection<Document> collection2 = database.getCollection("EduCostStatQueryFive");
     // Northeast Region
 ArrayList<String> northeastStates = new ArrayList<>();
 northeastStates.add("Connecticut");
@@ -118,6 +119,7 @@ westStates.add("Wyoming");
     List<String[]> listfinald = new ArrayList<>();
     List<String[]> listfinal2 = new ArrayList<>();
     List<String[]> sortedlist = new ArrayList<>();
+    
 
 
 
@@ -181,6 +183,7 @@ westStates.add("Wyoming");
     for(int i=0;i<southeastStates.size();i++){
         Document doc1 = new Document().append("year",Year).append("type",Type).append("length",Length).append("state",southeastStates.get(i));
         Document projection = new Document("value",1).append("_id",0);
+        
         FindIterable<Document> iterable = collection.find(doc1).projection(projection);
         List<Document> users = new ArrayList<>();
         for (Document user : iterable) {
@@ -331,21 +334,21 @@ westStates.add("Wyoming");
 
                     String[] row6 = new String[] {"west",totall5.toString()};
                     listfinal2.add(row6);
+
+                    
+    
+    Document doc = new Document().append("year",Year).append("type",Type).append("length",Length).append("Northeast", listfinal2.get(0)[1]).append("Southeast", listfinal2.get(1)[1]).append("Midwest", listfinal2.get(2)[1]).append("Southwest", listfinal2.get(3)[1]).append("West", listfinal2.get(4)[1]);
+    
+    
+    collection2.insertOne(doc);
+    
+
+
+
+    
+
         
     
-    
-    //     Collections.sort(listfinal , new Comparator<String[]>() {
-    //         public int compare(String[] s1, String[] s2) {
-    //             Integer i1 = Integer.parseInt(s1[1]);
-    //             Integer i2 = Integer.parseInt(s2[1]);
-    //             return i1.compareTo(i2);
-    //         }
-    //     });
-    
-    //     for (String[] state : listfinal) {
-    //         sortedlist.add(state);
-    //     }
-    // return sortedlist.subList(0, 5);
     return listfinal2;
             
         }

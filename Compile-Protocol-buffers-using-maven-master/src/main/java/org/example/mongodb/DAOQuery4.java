@@ -46,6 +46,7 @@ MongoClientSettings settings = MongoClientSettings.builder()
         .build();
 MongoClient mongoClient = MongoClients.create(settings);
 MongoDatabase database = mongoClient.getDatabase("skiers_resorts");
+MongoCollection<Document> collection2 = database.getCollection("EduCostStatQueryFour");
 
 public List<String[]> getgrowthstates(String[] Year,String Type,String Length) {
 
@@ -60,7 +61,6 @@ for (int i = 0; i < intArray.length; i++) {
     Year[i] = Integer.toString(intArray[i]);
 }
 
-Integer Diff = Integer.parseInt(Year[1])-Integer.parseInt(Year[0]); 
     MongoCollection<Document> collection = database.getCollection("EduCoststat");
     ArrayList<String> states = new ArrayList<>();
     states.add("Alabama");
@@ -181,9 +181,19 @@ Integer Diff = Integer.parseInt(Year[1])-Integer.parseInt(Year[0]);
     for (String[] state : listfinal) {
         sortedlist.add(state);
     }
-return sortedlist.subList(sortedlist.size()-5, sortedlist.size());
-        
+    List<String[]> Answer =sortedlist.subList(sortedlist.size()-5, sortedlist.size());
+    
+    Document doc = new Document().append("year",Year).append("type",Type).append("length",Length).append("state_1", Answer.get(0)[0]).append("state_2", Answer.get(1)[0]).append("state_3", Answer.get(2)[0]).append("state_4", Answer.get(3)[0]).append("state_5", Answer.get(4)[0]); 
+    
+    if(collection2.find(doc)==null){
+    collection2.insertOne(doc);
     }
+
+
+    return Answer;
+
+    
+}
 
    
     

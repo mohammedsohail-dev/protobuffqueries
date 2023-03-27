@@ -16,4 +16,5 @@ message Details{
     string Length=5;
     string Expense=6;
     string Value=7;
+    string[] Range=8;
 }
